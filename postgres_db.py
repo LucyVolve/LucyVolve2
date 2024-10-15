@@ -22,18 +22,17 @@ def connect():
                 roll_num NUMERIC(100),
                 name VARCHAR(100),
                 class_var VARCHAR(100),
-                section VARCHAR(50)
+                section VARCHAR(50),
                 contact VARCHAR(100),
                 fathersnm VARCHAR(100),
                 address VARCHAR(100),
                 gender VARCHAR(100),
                 dob VARCHAR(100),
-                date_attended DATE,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             
             );
 
-            CREATE TABLE IF NOT EXIST user_authentication (
+            CREATE TABLE IF NOT EXISTS user_authentication (
                 id SERIAL PRIMARY KEY,
                 username VARCHAR(100),
                 password VARCHAR(100),
@@ -54,3 +53,4 @@ def connect():
         print(e)
         return None
 
+connect()

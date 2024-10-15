@@ -98,10 +98,10 @@ dob_ent.grid(row=8,column=1,padx=2,pady=2)
 
 #======== Functions ==========#
 
-def fetch_date():
+def fetch_data():
     conn = connect()
     curr = conn.cursor()
-    curr.execute("SELECT * FROM data")
+    curr.execute("SELECT * FROM student_management")
     rows = curr.fetchall()
     if len(rows)!=0:
         student_table.delete(*student_table.get_children())
@@ -116,7 +116,8 @@ def add_func():
     else:
         conn = connect()
         curr = conn.cursor()
-        curr.execute("INSERT INTO data VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,)",(rollno.get(),name.get(),class_var.get(),section.get(),contact.get(),fathersnm.get(),address.get(),gender.get(),dob.get()))
+        curr.execute("""INSERT INTO student_management(roll_num, name, class_var, section, contact, fathersnm, address, gender, dob) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+        (rollno.get(),name.get(),class_var.get(),section.get(),contact.get(),fathersnm.get(),address.get(),gender.get(),dob.get()))
         conn.commit()
         conn.close()
 
